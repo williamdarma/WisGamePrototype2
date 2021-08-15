@@ -1,7 +1,7 @@
 ﻿using Project.Components;
 using System;
 using UnityEngine;
-
+using System.Collections;
 namespace Project.Hometown
 {
     [Serializable]
@@ -14,8 +14,8 @@ namespace Project.Hometown
         private string _itemName;
         private UpgradeableData _upgradeableData;
         public UpgradeableData upgradeableData { get { return _upgradeableData; } }
-        public event Action<UpgradeableData> data;
         public UpgradeableRepository _upgradeavleRepo;
+ 
 
         public void OnContextDispose()
         {
@@ -26,15 +26,19 @@ namespace Project.Hometown
         {
             _hometownContext = hometownContext;
             _itemName = upgradeableItemName;
-
             //add implementation
         }
 
-       public void setupData()
+        public void setupData()
         {
-            UpgradeableData test = new UpgradeableData(0,0);
-            _upgradeableData = test;
-
+            Debug.Log(_upgradeavleRepo); 
+            _upgradeavleRepo.FetchingData(getUpgradeableData);
+            
+        }
+       
+        private void getUpgradeableData(UpgradeableData obj)
+        {
+            _upgradeableData = obj;
 
         }
 

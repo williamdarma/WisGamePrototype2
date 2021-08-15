@@ -21,7 +21,6 @@ namespace Project.Hometown
             {
                 _inputManager = GetComponent<InputManager>();
             }
-
             if (_spawner == null)
             {
                 _spawner =  GetComponent<Spawner>();

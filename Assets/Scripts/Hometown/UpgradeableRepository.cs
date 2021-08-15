@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 namespace Project.Hometown
-{
+{[Serializable]
     public class UpgradeableRepository
     {
         private MonoBehaviour _context;
@@ -23,6 +23,15 @@ namespace Project.Hometown
             float randTimer = UnityEngine.Random.Range(0.5f, 1.5f);
             yield return new WaitForSeconds(randTimer);
 
+            var randomCurrentLevel = UnityEngine.Random.Range(1, 3);
+            var randomMaxLevel = UnityEngine.Random.Range(5, 10);
+
+            var data = new UpgradeableData(randomCurrentLevel, randomMaxLevel);
+            callback?.Invoke(data);
+        }
+
+        public  void FetchingData(Action<UpgradeableData> callback)
+        {
             var randomCurrentLevel = UnityEngine.Random.Range(1, 3);
             var randomMaxLevel = UnityEngine.Random.Range(5, 10);
 

@@ -26,9 +26,9 @@ namespace Project.Components
             setupPool();
         }
 
-        void spawnTank()
+        public void spawnTank()
         {
-            InvokeRepeating("testingSpawn", 1f, 2f);
+            InvokeRepeating("poolingSpawn", 1f, 2f);
         }
 
         void poolingSpawn()
